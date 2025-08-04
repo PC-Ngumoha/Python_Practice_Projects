@@ -1,0 +1,16 @@
+The following are the rules of the game:
+
+- The goal of the game is to add up the cards in your hand to the largest number without
+going over 21.
+- The cards in your hand total up to a number greater than 21, you lose immediately. This
+is known as a "Bust"
+- Cards 2 - 10 count for their normal face value i.e Card 2 has a value of 2 e.t.c.
+- The Joker (J), Queen (Q) and King (K) cards count as 10.
+- The Ace (A) card can count either as a 1 or an 11. You decide.
+
+- Whenever your score EQUALS the dealer's score, it's a DRAW.
+- Anyone with the higher score or 21 exactly at the end, WINS
+- If dealer ends up with a hand less than 17, then they must take another card.
+
+- We'll set our Ace as 11
+- We'll assume that we have an infinite deck of cards. Just to simplify the game.
