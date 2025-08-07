@@ -15,7 +15,7 @@ TITLE_FONT = ('Arial', 40, 'italic')
 try:
     df = pd.read_csv('data/words_to_learn.csv')
 except FileNotFoundError:
-    df = pd.read_csv('data/word_bank.csv')
+    df = pd.read_csv('data/hausa words.csv')
 
 data = df.to_dict('records')
 
