@@ -4,14 +4,19 @@ day 35: rain alert
 API authentication
 """
 import requests
-from twilio.rest import Client
+from sendchamp import Sendchamp
+# from twilio.rest import Client
 
 # OpenWeatherMap API details
 API_KEY = 'c75aa333e96e19a61b475c1decf95ad7'
 
-# Twilio API config
-account_sid = 'ACaf16f0b376abaf9ffd6c020f6fde01c5'
-auth_token = '23c78cff53e74016096669aab5aec9dd'
+# # Twilio API config
+# account_sid = 'ACaf16f0b376abaf9ffd6c020f6fde01c5'
+# auth_token = '23c78cff53e74016096669aab5aec9dd'
+
+# SendChamp config
+SENDCHAMP_KEY = 'sendchamp_live_$2a$10$chKtGKHPZ5nX0Hzx8gQY5.AjWICEHAvbqkF73mXQuL3BTMscJr2bG'
+
 
 MY_LAT = 8.495750
 MY_LONG = 8.521550
@@ -36,11 +41,22 @@ for data_pt in weather_data['list']:
         will_rain = True
 
 if will_rain:
-    client = Client(account_sid, auth_token)
-    message = client.messages.create(
-        body="It's going to rain today. Remember to bring an umbrella",
-        from_="+16187536221",
-        to="+2347089699162",
-    )
+    # # TWILIO CODE
+    # client = Client(account_sid, auth_token)
+    # message = client.messages.create(
+    #     body="It's going to rain today. Remember to bring an umbrella",
+    #     from_="+16187536221",
+    #     to="+2347089699162",
+    # )
+    #
+    # print(message.status) # Verify that SMS sent successfully.
 
-    print(message.status) # Verify that SMS sent successfully.
+    # SENDCHAMP
+    client = Sendchamp(SENDCHAMP_KEY)
+    response = client.sms.send(
+        to=['+2347089699162'],
+        message='It\'s going to rain today. Remember to bring an umbrella.',
+        sender_name="Sendchamp",
+        route="international"
+    )
+    print(response)
